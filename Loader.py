@@ -18,9 +18,10 @@ class Loader(object):
             data, target = np.array(dataset.values[:, 0:8]), np.array(dataset.values[:, 8:])
 
         if self.filename == "Dummy":
-            data = np.array([ [0, 0], [1, 1], [2, 2], [3, 3], [4, 4], [10, 10]])
+            data = np.array([ [0, 0], [1, 1], [2, 2], [3, 3], [4, 4], [100, 100]])
             target = np.array([0, 0, 0, 0, 0, 1])
 
         # normailize the data - Supposedly
-        data = (data - data.min(0)) / data.ptp(0)
+        # data = (data - data.min(0)) / data.ptp(0)
+
         return data, target
