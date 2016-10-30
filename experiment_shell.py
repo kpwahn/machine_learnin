@@ -29,8 +29,8 @@ def neural_network(train_data, train_target, test_data, test_target):
 
     # Number of features/inputs to our network
     num_features = len(train_data[0])
-    # How many nodes in each layer?
-    num_neurons_per_layer = [num_features, 3, 2]
+    # How many neurons in each layer?
+    num_neurons_per_layer = [5, 25, 3]
     #  How many layers?
     num_layers = len(num_neurons_per_layer)
 
@@ -45,13 +45,15 @@ def neural_network(train_data, train_target, test_data, test_target):
             neuralNetwork.create_new_layer(num_neurons_per_layer[layer], len(neuralNetwork.neural_network[layer - 1].layer_of_neurons))
 
         neuralNetwork.train(train_data, train_target)
+
+        neuralNetwork.predict(test_data, test_target)
     else:
         print("You need to specify 'number of nodes per layer' for each layer")
 
 def main(argv):
 
     # Load the data of the specified dataset
-    data, target = Loader("Dummy").loadData()
+    data, target = Loader("Iris").loadData()
     train_data, train_target, test_data, test_target = split_and_process_data(data, target,  0.7)
 
     # Which algorithm would you like?
